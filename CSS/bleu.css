@@ -1,0 +1,159 @@
+title {
+	color: #1113A1 ;
+}
+
+/* Alignement horizontal de toutes les cartes */
+.container-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; /* ou center */
+    flex-direction: column; /* Aligne l'image et le texte verticalement */
+    align-items: center;    /* Centre horizontalement l'image et le texte */
+    text-align: center;     /* Sécurité pour le texte */
+}
+
+/* Style pour chaque bloc individuel (Lien + Image + Description facultative) */
+.carte-item {
+    width: 250px;           /* Largeur fixe pour que toutes les cartes aient la même taille */
+	display: flex;
+    flex-direction: column;
+}
+
+/* Enlever le soulignement de tous les liens à l'intérieur de nos blocs */
+.carte-item a {
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 8px;    /* Espace entre le texte du lien et l'image */
+}
+
+/* Ajustement de la taille des images de cartes */
+.carte-item img {
+    width: 100%;           /* L'image prend toute la largeur du bloc (250px) */
+    height: auto;          /* Conserve les proportions de l'image */
+    border-radius: 4px;    /* Optionnel : arrondit légèrement les coins des images */
+}
+
+/* Style pour le texte de description sous la carte des restos */
+.carte-item .description {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 8px;
+}
+
+.description {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.carte-item ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+h1 {
+  	color: white;
+  	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+	margin-left: 20px;
+	font-size: 30;
+	font-family: "Arial";
+	font-style: "bold";
+}
+
+h2, h3 {
+	margin-left: 10px;
+	color: #1113A1 ;
+	font-size: 20;
+	font-family: "Arial";
+	font-style: "bold";
+}
+
+li, a, ol, ul, p {
+	margin-left: 10px;
+	color: black;
+	font-style: 12;
+	font-family: "Arial";
+}
+
+footer {
+	text-align: center;
+	font-family: "Arial";
+	color: black;
+	font-size: 12;
+	font-style: "bold";
+}
+
+body {
+	background-color: #12B343;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: darkblue;
+  font-weight: bold;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 0.5px solid black;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color:midnightblue;
+  font-weight: bold;
+}
+@media screen and (max-width: 1000px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+
+img {
+	display: inline-flex;
+	border: 5px #1BA3EC solid;
+	border-radius: 15px;
+}
+.image{
+	max-width : 60%;
+	max-height: 30%;
+}
+.pizza {
+	padding-top: 250px;
+	padding-left: 50px;
+	color: navy;
+	font-style: "bold";
+	font-family: "Arial";
+	font-size: 14px;
+}
+
+.pizz {
+	padding-left: 40px;
+	display: grid;
+	grid-template-columns: 350px 350px 350px;
+	grid-template-rows: 0px;
+  	gap: 15px;
+}
+
+img:hover {
+	display: flex;
+}
+
+.piza {
+	padding-left: 50px;
+	color: navy;
+	font-style: "bold";
+	font-family: "Arial";
+	font-size: 14px;
+}
