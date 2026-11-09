@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Tutos GGE </title>
+    <!-- Feuille de style principale de la page d'accueil -->
+    <link href="style/style_indexa.css" rel="stylesheet">
 
+    <style>
+        /* 🎨 PERSONNALISATION DU FORMULAIRE DE CONTACT */
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px 25px;
+            border: 2px solid #2b580c; /* Couleur accordée au thème */
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            color: #2b580c;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333333;
+            font-size: 0.9rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2b580c;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #2b580c;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1e3e08;
+        }
+
+        #status-message {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.9rem;
+            font-family: Arial, sans-serif;
+        }
+        .status-success { color: #2e7d32; }
+        .status-error { color: #c62828; }
+    </style>
+</head>
+<body> 
+    <!-- En-tête de la page avec titre stylisé en ligne -->
+    <div id="grad1" style="text-align:center; margin:auto; color: white; text-shadow: 2px 2px 3px black, 0 0 25px blue, 0 0 15px darkred; font-size:40px; font-weight:bold; font-family : Arial;">
+        Ecrivez-nous !!!
+    </div>
+    <!-- Barre de navigation principale (Topnav) -->
+    <div class="topnav">        
+        <!-- autres tutos -->
+        <a href="Accueil.html"> Accueil </a>
+    </div>
+                <!-- formulaire -->
+                <h2 id="formulaire"> Contact ! </h2>
+                    <form id="emailForm">
+                        <!-- Intitulé / Objet prédéfini du message -->
+                            <input type="hidden" name="_subject" value="Info">
+
+                        <div class="form-group">
+                            <label for="message">Message :</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Votre question ou suggestion..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="submitBtn">Envoyer</button>
+                    </form>
+                    <div id="status-message"></div>
+            </div>    
+        </div>
+
+    <div class="footer">
+        <h2><b>  Marche et rêve - 09/11/2026 </b></h2>
+    </div>
+
+    <!-- Script JavaScript pour l'envoi AJAX via Formspree -->
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const statusDiv = document.getElementById('status-message');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // ⚠️ Pensez à remplacer 'YOUR_FORMSPREE_ID' par votre identifiant Formspree réel
+            const formspreeEndpoint = 'https://formspree.io/f/xnpaoeaz';
+
+            const formData = new FormData(this);
+
+            statusDiv.className = '';
+            statusDiv.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(formspreeEndpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    statusDiv.className = 'status-success';
+                    statusDiv.textContent = 'Votre message a été envoyé avec succès !';
+                    this.reset();
+                } else {
+                    statusDiv.className = 'status-error';
+                    statusDiv.textContent = 'Échec de l\'envoi. Vérifiez votre ID Formspree.';
+                }
+            } catch (error) {
+                statusDiv.className = 'status-error';
+                statusDiv.textContent = 'Erreur lors de la connexion au service d\'envoi.';
+                console.error('Erreur:', error);
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
